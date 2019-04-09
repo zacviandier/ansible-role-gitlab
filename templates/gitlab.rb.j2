@@ -19,6 +19,12 @@ nginx['redirect_http_to_https'] = {{ gitlab_redirect_http_to_https }}
 nginx['ssl_certificate'] = "{{ gitlab_ssl_certificate }}"
 nginx['ssl_certificate_key'] = "{{ gitlab_ssl_certificate_key }}"
 
+# Letsencrypt
+letsencrypt['enable'] = {{ gitlab_letsencrypt_enable }}
+letsencrypt['auto_renew_hour'] = "12"
+letsencrypt['auto_renew_minute'] = "30"
+letsencrypt['auto_renew_day_of_month'] = "*/7"
+
 # The directory where Git repositories will be stored.
 git_data_dirs({"default" => {"path" => "{{ gitlab_git_data_dir }}"} })
 
